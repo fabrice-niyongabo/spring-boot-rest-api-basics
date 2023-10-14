@@ -4,7 +4,14 @@ public class Student {
     private int id;
     private String fName;
     private  String lName;
-    private int Age;
+    private int age;
+
+    public Student(int id, String fName, String lName, int age) {
+        this.id = id;
+        this.fName = fName;
+        this.lName = lName;
+        this.age = age;
+    }
 
     public int getId() {
         return id;
@@ -31,21 +38,20 @@ public class Student {
     }
 
     public int getAge() {
-        return Age;
+        return age;
     }
 
     public void setAge(int age) {
-        Age = age;
+        this.age = age;
     }
 
-    //this toString allows us to be able to print the student class within our backend
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
                 ", fName='" + fName + '\'' +
                 ", lName='" + lName + '\'' +
-                ", Age=" + Age +
+                ", age=" + age +
                 '}';
     }
 }
