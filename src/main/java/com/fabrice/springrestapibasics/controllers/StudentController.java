@@ -2,6 +2,7 @@ package com.fabrice.springrestapibasics.controllers;
 
 import com.fabrice.springrestapibasics.beans.Student;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -35,5 +36,15 @@ public class StudentController {
         students.add(new Student(3,"Fabrice","Niyongabo",30));
         students.add(new Student(4,"James","Bond",18));
         return students;
+    }
+
+    //path variables
+    //we use @PatVariable to annotate the path variable
+    //if the path variable is different with the function parameter name,
+    //we have to provide the name of the path variable to the parameter.
+    //the path variable is specified by {} within the route name or pathname.
+    @GetMapping("/api/v1/student/{id}/{fName}")
+    public Student getSingleStudent(@PathVariable("id") int studentId, @PathVariable String fName){
+        return new Student(studentId,fName,"Kabera",25);
     }
 }
