@@ -68,7 +68,8 @@ public class StudentController {
     public ResponseEntity<Student>   updateStatudent(@RequestBody Student student, @PathVariable int studentId){
         Student std = new Student(studentId,student.getfName(),student.getlName(),student.getAge());
         // return ResponseEntity.ok(student);//this returns 200
-        return new ResponseEntity<>(student , HttpStatus.CREATED); // 201
+        return new ResponseEntity<>(student , HttpStatus.CREATED); // 201, the first attribute is
+        // the body and the second argument is the actual status code to be returned
     }
 
 
