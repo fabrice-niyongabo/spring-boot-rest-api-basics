@@ -1,10 +1,9 @@
 package com.fabrice.springrestapibasics.controllers;
 
 import com.fabrice.springrestapibasics.beans.Student;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,4 +55,21 @@ public class StudentController {
     public Student getStudentByQueryParams(@RequestParam("id") int studentId, @RequestParam  String fName){
         return new Student(studentId,fName,"Kabera",25);
     }
+    //POST request
+    //we use @PostMapping annotation and @RequestBody to get the body of the request
+    @PostMapping("/api/v1/student")
+    @ResponseStatus(HttpStatus.CREATED) //1st method of changing return status code
+    public Student CreateStudent(@RequestBody Student student){
+        return student;
+    }
+
+    @PutMapping("/api/v1/student/{id}")
+    //second way of change status code
+    public ResponseEntity<Student>   updateStatudent(@RequestBody Student student, @PathVariable int studentId){
+        Student std = new Student(studentId,student.getfName(),student.getlName(),student.getAge());
+        // return ResponseEntity.ok(student);//this returns 200
+        return new ResponseEntity<>(student , HttpStatus.CREATED); // 201
+    }
+
+
 }
