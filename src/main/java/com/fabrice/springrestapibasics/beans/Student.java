@@ -38,6 +38,7 @@ public class Student {
         Age = age;
     }
 
+    //this toString allows us to be able to print the student class within our backend
     @Override
     public String toString() {
         return "Student{" +
